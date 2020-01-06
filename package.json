@@ -1,0 +1,19 @@
+{
+  "name": "nd-site",
+  "version": "1.0.0",
+  "description": "Web site of Next Direction based on Directus",
+  "author": "Manuel Hesselbarth",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --port 3002 --hostname 0.0.0.0",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/dotenv": "^1.4.0"
+  },
+  "devDependencies": {}
+}
