@@ -7,25 +7,40 @@
       {{projectName}}
     </section>
     <section class="menu">
-      <button class="hamburger">
+      <button class="hamburger" @click="openMenu">
         <span class="bar" :style="{background: colors.darker.bg}"></span>
         <span class="bar" :style="{background: colors.darker.bg}"></span>
         <span class="bar" :style="{background: colors.darker.bg}"></span>
       </button>
+      <Menu :open="menuOpen"/>
     </section>
   </header>
 </template>
 
 <script>
   import { mapGetters } from 'vuex';
+  import Menu from '~/components/layout/Menu/Menu.vue';
 
   export default {
+    components: {
+      Menu,
+    },
     computed: {
       ...mapGetters([
         'colors',
         'projectLogo',
         'projectName',
       ]),
+    },
+    data () {
+      return {
+        menuOpen: false,
+      };
+    },
+    methods: {
+      openMenu () {
+        this.$store.commit('setMenuOpen', !this.$store.state.menuOpen);
+      },
     },
   };
 </script>
@@ -58,6 +73,7 @@
       flex: 1;
       text-align: right;
       margin-right: 1rem;
+      position: relative;
 
       button.hamburger {
         width: 40px;

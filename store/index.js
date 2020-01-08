@@ -3,6 +3,8 @@ import tinycolor from 'tinycolor2';
 export const state = () => ({
   baseUrl: '',
   menuPages: [],
+  menuOpen: false,
+  parentPages: [],
   projectInfo: {},
 });
 
@@ -47,7 +49,23 @@ export const mutations = {
     state.baseUrl = url;
   },
   setMenuPages (state, pages) {
-    state.menuPages = pages;
+    state.menuPages = pages.map(page => {
+      return {
+        ...page,
+        nav_title: page.translations[0].nav_title,
+      };
+    });
+
+    const parentRelations = [];
+
+    pages.forEach(page => {
+      parentRelations[page.id] = page.parent ? page.parent.id : 0;
+    });
+
+    state.parentPages = parentRelations;
+  },
+  setMenuOpen (state, open) {
+    state.menuOpen = open;
   },
   setProjectInfo (state, info) {
     state.projectInfo = info;
