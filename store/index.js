@@ -6,6 +6,7 @@ export const state = () => ({
   menuOpen: false,
   parentPages: [],
   projectInfo: {},
+  imprint: {},
 });
 
 export const getters = {
@@ -40,6 +41,7 @@ export const getters = {
       },
     };
   },
+  imprint: state => state.imprint,
   projectLogo: state => state.projectInfo.project_logo.full_url,
   projectName: state => state.projectInfo.project_name,
 };
@@ -47,6 +49,9 @@ export const getters = {
 export const mutations = {
   setBaseUrl (state, url) {
     state.baseUrl = url;
+  },
+  setImprint (state, imprint) {
+    state.imprint = imprint;
   },
   setMenuPages (state, pages) {
     state.menuPages = pages.map(page => {
@@ -76,12 +81,14 @@ export const actions = {
   async nuxtServerInit ({ commit }, { env, store }) {
     commit('setBaseUrl', env.baseUrl);
 
-    const [projectInfo, menuPages] = await Promise.all([
+    const [projectInfo, menuPages, imprint] = await Promise.all([
       fetch(store.getters.baseUrl + '/').then(res => res.json()),
       fetch(store.getters.baseUrl + '/items/page?status=published&sort=-is_index,parent,sort&lang=de&fields=id,slug,parent,translations.nav_title&filter[is_imprint][empty]').then(res => res.json()),
+      fetch(store.getters.baseUrl + '/items/page?status=published&lang=de&fields=id,slug,parent,translations.nav_title&filter[is_imprint][eq]=1').then(res => res.json()),
     ]);
 
     commit('setProjectInfo', projectInfo.data.api);
     commit('setMenuPages', menuPages.data);
+    commit('setImprint', imprint.data[0]);
   },
 };

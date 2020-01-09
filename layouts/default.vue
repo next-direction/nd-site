@@ -35,8 +35,5 @@
   main {
     flex: 1;
     width: 100%;
-    padding: 2rem;
-    max-width: $bp-desktops;
-    margin: 0 auto;
   }
 </style>

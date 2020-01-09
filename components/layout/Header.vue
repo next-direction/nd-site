@@ -1,9 +1,9 @@
 <template>
   <header :style="{borderColor: colors.darker.bg}">
-    <section class="logo">
+    <section class="logo" @click="$router.push('/')">
       <img :src="projectLogo"/>
     </section>
-    <section class="name" :style="{color: colors.darker.bg}">
+    <section class="name" :style="{color: colors.darker.bg}" @click="$router.push('/')">
       {{projectName}}
     </section>
     <section class="menu">
@@ -49,15 +49,19 @@
   header {
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 70px;
     border-bottom: 1px solid;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
 
     section.logo {
       display: flex;
       align-items: center;
       height: 80%;
       margin-left: 1rem;
+      cursor: pointer;
 
       img {
         height: 80%;
@@ -67,6 +71,7 @@
     section.name {
       margin-left: 1rem;
       font-size: 1.8rem;
+      cursor: pointer;
     }
 
     section.menu {
