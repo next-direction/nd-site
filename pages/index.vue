@@ -1,7 +1,7 @@
 <template>
   <div>
     <Page :data="pageData"/>
-    <BaseElement v-for="elements in elementData" :key="elements.id" :elements="elements" v-if="elements.data.length"/>
+    <BaseElement v-for="elements in elementData" :key="elements.id" :elements="elements" v-if="elements.data && elements.data.length"/>
   </div>
 </template>
 
@@ -28,7 +28,18 @@
       const results = await Promise.all(elements);
       const elementData = [];
 
-      pageData.elements.forEach(({ element, bg_color: bgColor, bg_image, bg_full_width, side_by_side: sideBySide, space_before: spaceBefore, parallax_image: parallaxImage }, index) => {
+      pageData.elements.forEach(({
+        element,
+        bg_color: bgColor,
+        bg_image,
+        bg_full_width,
+        side_by_side: sideBySide,
+        space_after: spaceAfter,
+        space_before: spaceBefore,
+        parallax_image: parallaxImage,
+        overlay_opacity: overlayOpacity,
+        section_header: sectionHeader,
+      }, index) => {
         elementData.push({
           name: app.$toUpperCamelCase(element.collection),
           data: results[index].data,
@@ -36,8 +47,11 @@
           bgImage: bg_image ? bg_image.data.full_url : undefined,
           fullWidth: !!bg_full_width,
           sideBySide,
+          spaceAfter,
           spaceBefore,
           parallaxImage,
+          overlayOpacity,
+          sectionHeader,
         });
       });
 

@@ -18,12 +18,20 @@
   .sideBySide {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1.4rem;
+    grid-gap: 2rem;
+
+    article {
+      padding: 0;
+    }
   }
 
   article {
     display: flex;
     padding: 2rem 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
 
     i.material-icons {
       font-size: 4rem;
