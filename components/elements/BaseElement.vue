@@ -15,12 +15,14 @@
 
 <script>
   import HeaderAndText from './HeaderAndText.vue';
+  import HoverCard from './HoverCard.vue';
   import IconAndText from './IconAndText.vue';
   import ImageAndText from './ImageAndText.vue';
 
   export default {
     components: {
       HeaderAndText,
+      HoverCard,
       IconAndText,
       ImageAndText,
     },
