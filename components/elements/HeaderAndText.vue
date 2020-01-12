@@ -1,8 +1,8 @@
 <template>
   <section :class="{sideBySide}">
     <article v-for="element in data">
-      <h3>{{element.header}}</h3>
-      <summary>{{element.text}}</summary>
+      <h3>{{element.translations[0].header}}</h3>
+      <summary>{{element.translations[0].text}}</summary>
     </article>
   </section>
 </template>

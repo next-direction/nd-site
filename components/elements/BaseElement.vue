@@ -8,6 +8,7 @@
   }" :class="{hasImage: !!elements.bgImage, limitedWidth: !elements.fullWidth, spaceAfter: elements.spaceAfter, spaceBefore: elements.spaceBefore}">
     <h2 v-if="elements.sectionHeader" :style="{color: elements.bgImage ? 'white' : colors.dark.bg}">{{elements.sectionHeader}}</h2>
     <div class="content" :class="{hasHeader: elements.sectionHeader}">
+      <div class="description" v-if="elements.sectionDescription" v-html="elements.sectionDescription"></div>
       <component :is="elements.name" :data="elements.data" :sideBySide="elements.sideBySide"/>
     </div>
   </section>
@@ -60,6 +61,10 @@
     max-width: $bp-large-desktops;
     margin: 0 auto;
     padding: 3rem 2rem;
+
+    .description {
+      margin-bottom: 1.6rem;
+    }
 
     &.hasHeader {
       padding-top: 0;

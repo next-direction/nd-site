@@ -77,7 +77,7 @@
         z-index: 1;
         background: #333;
         height: 8rem;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
 
         i.material-icons {
           font-size: 3.4rem;
@@ -98,7 +98,7 @@
         position: relative;
         transform: translateY(-4rem);
         height: 8rem;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
         border: 1px solid;
         border-top: 0;
 

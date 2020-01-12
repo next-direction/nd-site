@@ -6,12 +6,12 @@ export default ({ app }, inject) => {
 }
 
 export const getPage = async (app, store, filter) => {
-  const indexPage = await fetch(`${store.getters.baseUrl}/items/page?fields=*.*,elements.*,elements.bg_image.data.full_url,elements.element.*&lang=${app.i18n.locale}&${filter}`).then(res => res.json());
+  const indexPage = await fetch(`${store.getters.baseUrl}/items/page?fields=*.*,elements.*,elements.bg_image.data.full_url,elements.element.*,elements.translations.*&lang=${app.i18n.locale}&${filter}`).then(res => res.json());
   const pageData = indexPage.data[0];
   const elements = [];
 
   pageData.elements.forEach(({ element, max_items }) => {
-    let url = `${store.getters.baseUrl}/items/${element.collection}?fields=*.*&lang=${app.i18n.locale}&filter[page][eq]=${pageData.id}`;
+    let url = `${store.getters.baseUrl}/items/${element.collection}?fields=*.*,${element.is_translatable ? 'translations.*' : ''}&lang=${app.i18n.locale}&filter[page][eq]=${pageData.id}`;
 
     if (max_items) {
       url += `&limit=${max_items}`;
@@ -33,7 +33,7 @@ export const getPage = async (app, store, filter) => {
     space_before: spaceBefore,
     parallax_image: parallaxImage,
     overlay_opacity: overlayOpacity,
-    section_header: sectionHeader,
+    translations,
   }, index) => {
     elementData.push({
       name: toUpperCamelCase(element.collection),
@@ -46,7 +46,8 @@ export const getPage = async (app, store, filter) => {
       spaceBefore,
       parallaxImage,
       overlayOpacity,
-      sectionHeader,
+      sectionHeader: translations[0] ? translations[0].section_header : '',
+      sectionDescription: translations[0] ? translations[0].section_description : '',
     });
   });
 
