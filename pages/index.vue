@@ -12,8 +12,8 @@
   import Page from '~/components/layout/Page.vue';
 
   export default {
-    async asyncData ({ store }) {
-      return await getPage(store, 'filter[is_index][nempty]');
+    async asyncData ({ app, store }) {
+      return await getPage(app, store, 'filter[is_index][nempty]');
     },
     components: {
       BaseElement,

@@ -1,8 +1,8 @@
 <template>
   <footer :style="{background: $filters.hexToRgba(colors.darker.bg, 0.3), borderColor: colors.darker.bg}">
     <span>&copy; 2019 - {{new Date().getFullYear()}} by {{projectName}}</span>
-    <span v-if="imprint && imprint.id">
-      <nuxt-link :to="'/' + imprint.slug" :style="{color: colors.darker.bg}">{{imprint.translations[0].nav_title}}</nuxt-link>
+    <span class="imprint" v-if="imprint && imprint.id">
+      <nuxt-link :to="localePath({ name: 'slug', params: { slug: imprint.slug } })" :style="{color: colors.darker.bg}">{{imprint.translations[0].nav_title}}</nuxt-link>
     </span>
   </footer>
 </template>

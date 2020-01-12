@@ -5,13 +5,13 @@ export default ({ app }, inject) => {
   inject('toUpperCamelCase', toUpperCamelCase);
 }
 
-export const getPage = async (store, filter) => {
-  const indexPage = await fetch(`${store.getters.baseUrl}/items/page?fields=*.*,elements.*,elements.bg_image.data.full_url,elements.element.*&lang=de&${filter}`).then(res => res.json());
+export const getPage = async (app, store, filter) => {
+  const indexPage = await fetch(`${store.getters.baseUrl}/items/page?fields=*.*,elements.*,elements.bg_image.data.full_url,elements.element.*&lang=${app.i18n.locale}&${filter}`).then(res => res.json());
   const pageData = indexPage.data[0];
   const elements = [];
 
   pageData.elements.forEach(({ element, max_items }) => {
-    let url = `${store.getters.baseUrl}/items/${element.collection}?fields=*.*&lang=de&filter[page][eq]=${pageData.id}`;
+    let url = `${store.getters.baseUrl}/items/${element.collection}?fields=*.*&lang=${app.i18n.locale}&filter[page][eq]=${pageData.id}`;
 
     if (max_items) {
       url += `&limit=${max_items}`;

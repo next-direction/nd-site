@@ -78,13 +78,13 @@ export const mutations = {
 };
 
 export const actions = {
-  async nuxtServerInit ({ commit }, { env, store }) {
+  async nuxtServerInit ({ commit }, { app, env, store }) {
     commit('setBaseUrl', env.baseUrl);
 
     const [projectInfo, menuPages, imprint] = await Promise.all([
       fetch(store.getters.baseUrl + '/').then(res => res.json()),
-      fetch(store.getters.baseUrl + '/items/page?status=published&sort=-is_index,parent,sort&lang=de&fields=id,slug,parent,translations.nav_title&filter[is_imprint][empty]').then(res => res.json()),
-      fetch(store.getters.baseUrl + '/items/page?status=published&lang=de&fields=id,slug,parent,translations.nav_title&filter[is_imprint][eq]=1').then(res => res.json()),
+      fetch(`${store.getters.baseUrl}/items/page?status=published&sort=-is_index,parent,sort&lang=${app.i18n.locale}&fields=id,slug,parent,translations.nav_title&filter[is_imprint][empty]`).then(res => res.json()),
+      fetch(`${store.getters.baseUrl}/items/page?status=published&lang=${app.i18n.locale}&fields=id,slug,parent,translations.nav_title&filter[is_imprint][eq]=1`).then(res => res.json()),
     ]);
 
     commit('setProjectInfo', projectInfo.data.api);

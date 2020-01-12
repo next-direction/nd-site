@@ -1,9 +1,9 @@
 <template>
   <header :style="{borderColor: colors.darker.bg}">
-    <section class="logo" @click="$router.push('/')">
+    <section class="logo" @click="$router.push(localePath('index'))">
       <img :src="projectLogo"/>
     </section>
-    <section class="name" :style="{color: colors.darker.bg}" @click="$router.push('/')">
+    <section class="name" :style="{color: colors.darker.bg}" @click="$router.push(localePath('index'))">
       {{projectName}}
     </section>
     <section class="menu">

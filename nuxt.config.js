@@ -48,6 +48,20 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     'nuxt-material-design-icons',
+    [
+      'nuxt-i18n',
+      {
+        locales: ['en', 'de'],
+        defaultLocale: 'en',
+        detectBrowserLanguage: {
+          useCookie: false,
+          fallbackLocale: 'en',
+        },
+        vueI18n: {
+          fallbackLocale: 'en',
+        },
+      },
+    ],
   ],
   styleResources: {
     scss: [

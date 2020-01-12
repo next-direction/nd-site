@@ -3,7 +3,8 @@
     <template v-for="(item, index) in items">
       <li :class="{firstItem: index === 0 && level === 0}"
           :style="{backgroundColor: hovered.includes(item.id) ? $filters.hexToRgba(colors.original.bg, 0.1) : ''}">
-        <nuxt-link class="link" :to="'/' + (item.slug !== 'home' ? item.slug : '')" :style="{color: colors.dark.bg, borderColor: colors.original.bg}"
+        <nuxt-link class="link" :to="localePath(item.slug !== 'home' ? { name: 'slug', params: { slug: item.slug } } : 'index')"
+                   :style="{color: colors.dark.bg, borderColor: colors.original.bg}"
                    @mouseover.native.stop="addHovered(item.id)" @mouseleave.native="removeHovered(item.id)" @click.native="itemClicked">
           <span class="spacer" v-for="n in level"></span>
           <span class="title">{{ item.nav_title }}</span>

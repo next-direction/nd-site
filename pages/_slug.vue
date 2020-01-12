@@ -12,8 +12,8 @@
   import Page from '~/components/layout/Page.vue';
 
   export default {
-    async asyncData ({ params, store }) {
-      return await getPage(store, 'filter[slug][eq]=' + params.slug);
+    async asyncData ({ app, params, store }) {
+      return await getPage(app, store, 'filter[slug][eq]=' + params.slug);
     },
     components: {
       BaseElement,
