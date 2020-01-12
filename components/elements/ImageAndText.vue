@@ -1,14 +1,11 @@
 <template>
   <section :class="{sideBySide}">
     <article v-for="element in data" :class="element.image_position">
-      <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"
-           v-if="element.image_position !== 'righttop' && element.image_position !== 'rightmiddle'"/>
+      <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"/>
       <summary>
         <h3>{{element.title}}</h3>
         <p>{{element.text}}</p>
       </summary>
-      <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"
-           v-if="element.image_position === 'righttop' || element.image_position === 'rightmiddle'"/>
     </article>
   </section>
 </template>
@@ -106,12 +103,18 @@
         align-self: center;
       }
 
+      .image {
+        align-self: center;
+      }
+
       summary {
         margin-left: 2rem;
       }
     }
 
     &.righttop {
+      flex-direction: row-reverse;
+
       summary {
         text-align: right;
         margin-right: 2rem;
@@ -119,7 +122,13 @@
     }
 
     &.rightmiddle {
+      flex-direction: row-reverse;
+
       i.material-icons {
+        align-self: center;
+      }
+
+      .image {
         align-self: center;
       }
 

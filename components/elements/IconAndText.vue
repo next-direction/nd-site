@@ -1,9 +1,8 @@
 <template>
   <section :class="{sideBySide}">
     <article v-for="element in data" :class="element.icon_position">
-      <i class="material-icons" :class="element.icon_position" v-if="element.icon_position !== 'righttop' && element.icon_position !== 'rightmiddle'">{{element.icon}}</i>
+      <i class="material-icons" :class="element.icon_position">{{element.icon}}</i>
       <summary>{{element.text}}</summary>
-      <i class="material-icons" :class="element.icon_position" v-if="element.icon_position === 'righttop' || element.icon_position === 'rightmiddle'">{{element.icon}}</i>
     </article>
   </section>
 </template>
@@ -73,6 +72,8 @@
     }
 
     &.righttop {
+      flex-direction: row-reverse;
+
       summary {
         text-align: right;
         margin-right: 2rem;
@@ -80,6 +81,8 @@
     }
 
     &.rightmiddle {
+      flex-direction: row-reverse;
+
       i.material-icons {
         align-self: center;
       }

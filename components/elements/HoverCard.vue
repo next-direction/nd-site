@@ -1,25 +1,37 @@
 <template>
   <section>
     <article v-for="element in data" @mouseover.stop="addHovered(element.id)" @mouseleave="removeHovered(element.id)">
-      <div class="top" :style="{background: hovered.includes(element.id) ? colors.original.bg : '#333333', color: hovered.includes(element.id) ? colors.original.text : 'white'}">
+      <div class="top" :style="{
+        background: hovered.includes(element.id) ? (element.color ? element.color : colors.original.bg) : '#333333',
+        color: hovered.includes(element.id) ? (element.color ? (tinycolor(element.color).isLight() ? 'black' : 'white') : colors.original.text) : 'white'
+      }">
         <i class="material-icons">{{element.icon}}</i>
         <h3 v-if="element.title">{{element.title}}</h3>
       </div>
-      <div class="bottom" :style="{borderColor: hovered.includes(element.id) ? colors.original.bg : '#333333'}">
+      <div class="bottom" :style="{borderColor: hovered.includes(element.id) ? (element.color ? element.color : colors.original.bg) : '#333333'}">
         <p>
           {{element.text}}
         </p>
-        <a :href="element.read_more_link" target="_blank" rel="nofollow noreferrer noopener" v-if="element.read_more_link" :style="{color: colors.original.bg}">Read more</a>
+        <a :href="element.read_more_link" target="_blank" rel="nofollow noreferrer noopener" v-if="element.read_more_link"
+           :style="{color: element.color
+           ? (tinycolor(element.color).isLight() ? tinycolor(element.color).darken(20).toString() : element.color)
+           : (tinycolor(colors.original.bg).isLight() ? tinycolor(colors.original.bg).darken(20) : colors.original.bg)}">Read
+          more</a>
       </div>
     </article>
   </section>
 </template>
 
 <script>
+  import tinycolor from 'tinycolor2';
+
   export default {
     computed: {
       colors () {
         return this.$store.getters.colors;
+      },
+      tinycolor () {
+        return tinycolor;
       },
     },
     data () {
