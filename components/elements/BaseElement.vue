@@ -18,6 +18,7 @@
   import HoverCard from './HoverCard.vue';
   import IconAndText from './IconAndText.vue';
   import ImageAndText from './ImageAndText.vue';
+  import Rating from './Rating.vue';
 
   export default {
     components: {
@@ -25,6 +26,7 @@
       HoverCard,
       IconAndText,
       ImageAndText,
+      Rating,
     },
     computed: {
       colors () {
