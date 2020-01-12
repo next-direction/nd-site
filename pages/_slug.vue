@@ -1,20 +1,22 @@
 <template>
-  <Page :data="pageData"/>
+  <div>
+    <Page :data="pageData"/>
+    <BaseElement v-for="elements in elementData" :key="elements.id" :elements="elements" v-if="elements.data && elements.data.length"/>
+  </div>
 </template>
 
 <script>
+  import { getPage } from '~/plugins/globalFunctions';
+
+  import BaseElement from '~/components/elements/BaseElement.vue';
   import Page from '~/components/layout/Page.vue';
 
   export default {
     async asyncData ({ params, store }) {
-      const indexPage = await fetch(store.getters.baseUrl + '/items/page?fields=*.*&lang=de&filter[slug][eq]=' + params.slug).then(res => res.json());
-      const pageData = indexPage.data[0];
-
-      return {
-        pageData,
-      };
+      return await getPage(store, 'filter[slug][eq]=' + params.slug);
     },
     components: {
+      BaseElement,
       Page,
     },
   };
