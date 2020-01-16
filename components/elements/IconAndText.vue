@@ -2,7 +2,7 @@
   <section :class="{sideBySide}">
     <article v-for="element in data" :class="element.icon_position">
       <i class="material-icons" :class="element.icon_position">{{element.icon}}</i>
-      <summary>{{element.text}}</summary>
+      <summary v-html="element.translations[0].text"/>
     </article>
   </section>
 </template>

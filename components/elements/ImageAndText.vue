@@ -3,8 +3,8 @@
     <article v-for="element in data" :class="element.image_position">
       <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"/>
       <summary>
-        <h3>{{element.title}}</h3>
-        <p>{{element.text}}</p>
+        <h3>{{element.translations[0].title}}</h3>
+        <p v-html="element.translations[0].text"></p>
       </summary>
     </article>
   </section>

@@ -6,17 +6,18 @@
         color: hovered.includes(element.id) ? (element.color ? (tinycolor(element.color).isLight() ? 'black' : 'white') : colors.original.text) : 'white'
       }">
         <i class="material-icons">{{element.icon}}</i>
-        <h3 v-if="element.title">{{element.title}}</h3>
+        <h3 v-if="element.translations[0].title">{{element.translations[0].title}}</h3>
       </div>
       <div class="bottom" :style="{borderColor: hovered.includes(element.id) ? (element.color ? element.color : colors.original.bg) : '#333333'}">
         <p>
-          {{element.text}}
+          {{element.translations[0].text}}
         </p>
         <a :href="element.read_more_link" target="_blank" rel="nofollow noreferrer noopener" v-if="element.read_more_link"
            :style="{color: element.color
            ? (tinycolor(element.color).isLight() ? tinycolor(element.color).darken(20).toString() : element.color)
-           : (tinycolor(colors.original.bg).isLight() ? tinycolor(colors.original.bg).darken(20) : colors.original.bg)}">Read
-          more</a>
+           : (tinycolor(colors.original.bg).isLight() ? tinycolor(colors.original.bg).darken(20) : colors.original.bg)}">
+          {{element.translations[0].read_more_link}}
+        </a>
       </div>
     </article>
   </section>
