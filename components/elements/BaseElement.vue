@@ -19,6 +19,7 @@
   import HoverCard from './HoverCard.vue';
   import IconAndText from './IconAndText.vue';
   import ImageAndText from './ImageAndText.vue';
+  import ImageStory from './ImageStory.vue';
   import Rating from './Rating.vue';
 
   export default {
@@ -27,6 +28,7 @@
       HoverCard,
       IconAndText,
       ImageAndText,
+      ImageStory,
       Rating,
     },
     computed: {

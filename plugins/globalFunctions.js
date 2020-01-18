@@ -22,7 +22,7 @@ export const getPage = async (app, store, filter) => {
 
   const results = await Promise.all(elements);
   const elementData = [];
-  console.dir(results);
+
   pageData.elements.forEach(({
     element,
     bg_color: bgColor,

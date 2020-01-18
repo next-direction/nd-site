@@ -4,7 +4,7 @@
       <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"/>
       <summary>
         <h3>{{element.translations[0].title}}</h3>
-        <p v-html="element.translations[0].text"></p>
+        <div v-html="element.translations[0].text"></div>
       </summary>
     </article>
   </section>
@@ -64,7 +64,7 @@
     }
 
     summary {
-      p {
+      div {
         -ms-hyphens: auto;
         -webkit-hyphens: auto;
         hyphens: auto;

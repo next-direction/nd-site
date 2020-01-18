@@ -1,15 +1,15 @@
 <template>
   <section :class="{sideBySide}">
     <article v-for="element in data">
-      <h3 v-if="element.title">{{element.title}}</h3>
-      <summary v-if="element.text">{{element.text}}</summary>
+      <h3 v-if="element.translations[0].title">{{element.translations[0].title}}</h3>
+      <summary v-if="element.translations[0].text">{{element.translations[0].text}}</summary>
       <div class="rating">
         <div class="stars">
           <i class="material-icons" v-for="n in 10" :style="{color: n <= element.rating ? '#FFD700' : ''}">{{n <= element.rating ? 'star' : 'star_border'}}</i>
         </div>
         <div class="scale" :class="{single: data.length === 1}">
-          <span class="lowerText">{{element.lower_text}}</span>
-          <span class="upperText">{{element.upper_text}}</span>
+          <span class="lowerText">{{element.translations[0].lower_text}}</span>
+          <span class="upperText">{{element.translations[0].upper_text}}</span>
         </div>
       </div>
 
