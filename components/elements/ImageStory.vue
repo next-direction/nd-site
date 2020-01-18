@@ -12,7 +12,7 @@
           {{element.translations[0].title}}
         </span>
         <span v-if="element.more_link" class="moreLink">
-          <a :href="element.more_link" target="_blank" rel="noreferrer noopener" :style="{color: colors.original.bg}" v-if="!element.more_link_internal">{{element.translations[0].more_link_text}} &raquo;</a>
+          <a :href="element.more_link" target="_blank" rel="nofollow noreferrer noopener" :style="{color: colors.original.bg}" v-if="!element.more_link_internal">{{element.translations[0].more_link_text}} &raquo;</a>
           <nuxt-link class="link" :to="localePath({ name: 'slug', params: { slug: element.more_link } })" :style="{color: colors.original.bg}" v-if="element.more_link_internal">{{element.translations[0].more_link_text}} &raquo;</nuxt-link>
         </span>
       </h3>

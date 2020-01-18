@@ -4,6 +4,7 @@
     <span class="imprint" v-if="imprint && imprint.id">
       <nuxt-link :to="localePath({ name: 'slug', params: { slug: imprint.slug } })" :style="{color: colors.darker.bg}">{{imprint.translations[0].nav_title}}</nuxt-link>
     </span>
+    <span v-else>Imprint is missing!</span>
   </footer>
 </template>
 

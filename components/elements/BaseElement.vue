@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import FeatureList from './FeatureList.vue';
   import HeaderAndText from './HeaderAndText.vue';
   import HoverCard from './HoverCard.vue';
   import IconAndText from './IconAndText.vue';
@@ -24,6 +25,7 @@
 
   export default {
     components: {
+      FeatureList,
       HeaderAndText,
       HoverCard,
       IconAndText,
@@ -66,6 +68,7 @@
 
     .description {
       margin-bottom: 1.6rem;
+      line-height: 1.6;
     }
 
     &.hasHeader {

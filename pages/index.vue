@@ -2,6 +2,9 @@
   <div>
     <Page :data="pageData"/>
     <BaseElement v-for="elements in elementData" :key="elements.id" :elements="elements" v-if="elements.data && elements.data.length"/>
+    <div v-if="!pageData">
+      This page does not have any content!
+    </div>
   </div>
 </template>
 

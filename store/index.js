@@ -57,7 +57,7 @@ export const mutations = {
     state.menuPages = pages.map(page => {
       return {
         ...page,
-        nav_title: page.translations[0].nav_title,
+        nav_title: page.translations[0] ? page.translations[0].nav_title : 'Nav title missing',
       };
     });
 

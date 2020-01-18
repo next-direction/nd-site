@@ -7,7 +7,7 @@
       {{projectName}}
     </section>
     <section class="menu">
-      <button class="hamburger" @click="openMenu">
+      <button class="hamburger" @click="openMenu" v-if="$store.state.menuPages.length">
         <span class="bar" :style="{background: colors.darker.bg}"></span>
         <span class="bar" :style="{background: colors.darker.bg}"></span>
         <span class="bar" :style="{background: colors.darker.bg}"></span>

@@ -22,13 +22,13 @@
     data () {
       return {
         meta: this.data,
-        elements: this.data.elements,
-        t: this.data.translations[0],
+        elements: this.data ? this.data.elements : [],
+        t: this.data && this.data.translations[0] ? this.data.translations[0] : {},
       };
     },
     head () {
       return {
-        title: this.t.nav_title + ' | ' + this.$store.getters.projectName,
+        title: (this.t.nav_title ? this.t.nav_title + ' | ' : '') + this.$store.getters.projectName,
       };
     },
     props: ['data'],
