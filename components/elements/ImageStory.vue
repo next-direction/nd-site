@@ -86,6 +86,8 @@
       -ms-hyphens: auto;
       -webkit-hyphens: auto;
       hyphens: auto;
+
+      line-height: 1.6;
     }
   }
 
