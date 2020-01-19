@@ -4,7 +4,7 @@
       <div class="image" :style="{backgroundImage: 'url(' + element.image.data.full_url + ')'}" :class="[element.image_position, 'radius-' + element.border_radius]"/>
       <summary>
         <h3>{{element.translations[0].title}}</h3>
-        <div v-html="element.translations[0].text"></div>
+        <div v-html="element.translations[0].text" ref="content"></div>
       </summary>
     </article>
   </section>
@@ -12,6 +12,21 @@
 
 <script>
   export default {
+    computed: {
+      colors () {
+        return this.$store.getters.colors;
+      },
+    },
+    mounted () {
+      this.$refs.content.forEach(element => {
+        const links = Array.prototype.slice.call(element.getElementsByTagName('a'));
+
+        links.forEach(link => {
+          link.style.color = this.colors.original.bg;
+          link.setAttribute('rel', 'nofollow noreferrer noopener');
+        });
+      });
+    },
     props: ['data', 'sideBySide'],
   };
 </script>

@@ -29,6 +29,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
+    grid-row-gap: 2rem;
 
     article {
       display: flex;
@@ -118,6 +119,7 @@
       padding: 0.4rem;
       border-left: 0.4rem solid;
       margin: 1rem 0 0 0;
+      line-height: 1.4;
     }
   }
 </style>
