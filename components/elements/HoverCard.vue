@@ -92,7 +92,8 @@
         }
 
         h3 {
-          margin: 1rem 0 0 0;
+          margin: 0 0 0 0;
+          text-align: center;
         }
       }
 
@@ -103,13 +104,13 @@
         align-items: center;
 
         background: white;
+        color: black;
         position: relative;
         transform: translateY(-4rem);
         height: 8rem;
         transition: all 0.3s ease;
         border: 1px solid;
         border-top: 0;
-
         padding: 0.6rem;
 
         a {
