@@ -55,6 +55,7 @@
     text-align: center;
     padding-top: 2rem;
     margin-bottom: 2rem;
+    margin-top: 0;
   }
 
   .hasImage {
